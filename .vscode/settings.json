@@ -1,0 +1,5 @@
+{
+  "editor.tabCompletion": "on",
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/0957bddf-539e-48db-bae2-0317d5d05bdc/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/frisloginapis",
+  "appService.deploySubpath": "."
+}

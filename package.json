@@ -1,0 +1,31 @@
+{
+  "name": "helpdesk-nodejs-backend",
+  "version": "1.0.0",
+  "description": "helpdesk backend with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
+  },
+  "author": "adebayo abiodun",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/msal-node": "^1.17.3",
+    "@novu/node": "^0.10.2",
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "firebase-admin": "^10.2.0",
+    "googleapis": "^100.0.0",
+    "moment": "^2.29.3",
+    "node-localstorage": "^2.2.1",
+    "nodemailer": "^6.7.5",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "request": "^2.88.2",
+    "sequelize": "^6.20.1",
+    "sequelize-auto": "^0.8.8",
+    "socket.io": "^4.5.2"
+  }
+}
