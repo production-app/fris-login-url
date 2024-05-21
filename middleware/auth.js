@@ -48,17 +48,21 @@ exports.authCheck = async (req, res, next) => {
       },
     };
 
-    try {
-      const photoUrl = await axios
-        .get("https://graph.microsoft.com/v1.0/me/photo/$value", config)
-        .then((res) => {
-          const base64Body = res.data.toString("base64");
+    let base64Body;
 
-          return base64Body || "";
-        });
-    } catch (error) {
-      console.log(error);
-    }
+    const photoUrl = await axios
+      .get("https://graph.microsoft.com/v1.0/me/photo/$value", config)
+      .then((res) => {
+        base64Body = res.data.toString("base64");
+
+        return base64Body || null;
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err) {
+          throw new Error(`Error Ocurred ! - ${err}`);
+        }
+      });
 
     const profile = await axios
       .get("https://graph.microsoft.com/beta/me", configs)
@@ -68,18 +72,16 @@ exports.authCheck = async (req, res, next) => {
       });
 
     req.profile = profile;
-
-    // photoUrl ? (req.pic = photoUrl) : null;
-    // req.pic = photoUrl || "";
+    req.pic = photoUrl ? photoUrl : null;
     req.user = firebaseUser;
 
-    // console.log(photoUrl);
+    //console.log(photoUrl);
 
     next();
   } catch (error) {
     console.log(error);
     res.status(401).json({
-      err: "Invalid or expired Token",
+      err: "Invalid Login",
       error,
     });
   }

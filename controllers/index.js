@@ -32,7 +32,7 @@ exports.createOrUpdateUser = async (req, res, next) => {
       where: { email },
       defaults: {
         name,
-        // photo_url: req.pic || null,
+        photo_url: req.pic || null,
         department,
         role: jobTitle,
         email,
@@ -45,7 +45,7 @@ exports.createOrUpdateUser = async (req, res, next) => {
       session: `Login Occurred at ${moment().format("MMM Do YY")}`,
     });
 
-    res.json(user);
+    res.status(200).json(user);
   } catch (error) {
     console.log(error);
 

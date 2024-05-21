@@ -20,6 +20,7 @@ let onlineUser = [];
 try {
   server = app.listen(PORT, async () => {
     await sequelize.authenticate();
+    //await sequelize.sync({ force: true });
     console.log("DB connected", PORT);
   });
 } catch (error) {
